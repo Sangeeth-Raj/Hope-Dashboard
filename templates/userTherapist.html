@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+        <link rel="stylesheet" href="{% static '/css/font.css' %}" />
+        <title>Hope</title>
+    </head>
+    <body>
+        <header>
+            <div class="logoProfile">
+                <div class="logo">
+                    <a href="#">
+                        <span class="logoFrame">
+                            <img
+                                src="{% static '/images/logo.png' %}"
+                                alt="logo" />
+                        </span>
+                    </a>
+                </div>
+                <div class="profile">
+                    <div class="profileContainer">
+                        <div class="profileFrame">
+                            <img
+                                src="{% static '/images/profile-image.png' %}"
+                                alt="" />
+                        </div>
+                        <span class="name"> {{ request.user.patient.name }} </span>
+                        <div class="downArrow">
+                            <a href="{% url 'profile' %}">
+                                <img
+                                    src="{% static '/images/arrow-down.svg' %}"
+                                    alt="down arrow" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <a href="{% url 'user_dashboard' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/dashboard.svg' %}"
+                                    alt="home" />
+                            </div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'user_solution' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/therapist.svg' %}"
+                                    alt="therapist" />
+                            </div>
+                            Solution
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'user_therapist' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/therapist.svg' %}"
+                                    alt="therapist" />
+                            </div>
+                            Therapist
+                        </a>
+                    </li>
+                </ul>
+                <div class="logout">
+                    <a href="#" id="logoutButton">
+                        <div class="iconFrame">
+                            <img
+                                src="{% static '/images/logout.svg' %}"
+                                alt="" />
+                        </div>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+            <div class="content">
+                <section id="therapist">
+                    <h4>Therapist</h4>
+                    <table id="therapistTable">
+                        <thead>
+                            <tr>
+                                <th>Sl No</th>
+                                <th>Therapist ID</th>
+                                <th>Name</th>
+                                <th>Hospital Name</th>
+                                <th>Total Years of Experience</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for admin_therapist in single %}
+                            <tr id="therapist{{ forloop.counter }}">
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ admin_therapist.therapist_id }}</td> 
+                                <td>{{ admin_therapist.name }}</td>
+                                <td>{{ admin_therapist.hospital_name }}</td>
+                                <td>{{ admin_therapist.total_years_of_experience }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+
+        <div class="modal" id="logoutModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="heading">Logout</div>
+                <div class="question">Are you sure want to logout?</div>
+                <form method="post" action="{% url 'logout_user' %}">
+                    {% csrf_token %}
+                    <div class="buttonContainer">
+                        <button type="button" class="borderButton" onclick="closeLogoutModal()">Cancel</button>
+                        <button type="submit" class="backgroundButton">Logout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="{% static 'js/app.js' %}"></script>
+        <script src="{% static '/js/logout-modal.js' %}"></script>
+        {% comment %} <script src="{% static 'js/patient-therapist-single.js' %}"></script> {% endcomment %}
+        <script>
+            // Get the current path of the page
+            var currentPath = window.location.pathname;
+
+            // Get all navigation links
+            var navLinks = document.querySelectorAll('nav a');
+
+            // Iterate through each navigation link
+            navLinks.forEach(function(link) {
+                // Check if the current path matches the link's href attribute
+                if (currentPath === link.getAttribute('href')) {
+                    // Add the active class to the link's parent <li> element
+                    link.parentElement.classList.add('active');
+                }
+            });
+        </script>
+    </body>
+</html>

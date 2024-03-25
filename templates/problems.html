@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/font.css' %}" />
+    <title>Hope</title>
+</head>
+<body>
+    <header>
+        <div class="logoProfile">
+            <div class="logo">
+                <a href="#">
+                    <span class="logoFrame">
+                        <img src="{% static '/images/logo.png' %}" alt="logo" />
+                    </span>
+                </a>
+            </div>
+            <div class="profile">
+                <div class="profileContainer">
+                    <div class="profileFrame">
+                        <img src="{% static '/images/profile-image.png' %}" alt="" />
+                    </div>
+                    <span class="name">{{ request.user.profile.name }}</span>
+                    <div class="downArrow">
+                        <a href="{% url 'therapist_profile' %}">
+                            <img src="{% static '/images/arrow-down.svg' %}" alt="down arrow" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav>
+            <ul>
+                <li class="nav-item">
+                    <a href="{% url 'therapist_dashboard' %}">
+                        <div class="iconFrame">
+                            <img src="{% static '/images/dashboard.svg' %}" alt="home" />
+                        </div>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'problems' %}">
+                        <div class="iconFrame">
+                            <img src="{% static '/images/therapist.svg' %}" alt="therapist" />
+                        </div>
+                        Problems
+                    </a>
+                </li>
+            </ul>
+            <div class="logout">
+                <a href="#" id="logoutButton">
+                    <div class="iconFrame">
+                        <img src="{% static '/images/logout.svg' %}" alt="" />
+                    </div>
+                    Logout
+                </a>
+            </div>
+        </nav>
+        <div class="content">
+            <section id="problems">
+                <h4>Problems</h4>
+                <div class="tableContainer">
+                    <ul>
+                        {% for problem in problem_list %}
+                        <li id="{{ problem.id }}">
+                            <div class="heading">{{ problem.title }}</div>
+                            <div class="problem">
+                                <span class="truncate">{{ problem.description }}</span>
+                            </div>
+                            <div class="buttonContainer">
+                                <a href="{% url 'view_problem' problem.id %}">
+                                    <button class="borderButton">View</button>
+                                </a>
+                                {% comment %} <button class="backgroundButton" onclick="showModal()">Post solution</button> {% endcomment %}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="modal" id="logoutModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="heading">Logout</div>
+            <div class="question">Are you sure want to logout?</div>
+            <form method="post" action="{% url 'logout_user' %}">
+                {% csrf_token %}
+                <div class="buttonContainer">
+                    <button type="button" class="borderButton" onclick="closeLogoutModal()">Cancel</button>
+                    <button type="submit" class="backgroundButton">Logout</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- <div class="modal" id="postSolutionModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="heading">Post solution</div>
+            <div class="subHeading">
+                Diagnosing major depressive disorder
+            </div>
+            <div class="question">
+                What are the early warning signs of eating disorders, and
+                how can they be effectively addressed through preventive
+                measures and interventions?
+            </div>
+            <form action="">
+                <textarea name="" id="" cols="20" rows="10" placeholder="Write your solution here..."></textarea>
+                <div class="buttonContainer">
+                    <button type="reset" class="borderButton">Cancel</button>
+                    <button type="submit" class="backgroundButton">Post</button>
+                </div>
+            </form>
+        </div>
+    </div> -->
+
+    <script src="{% static 'js/modal.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static '/js/logout-modal.js' %}"></script>
+
+    </body>
+</html>

@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/font.css' %}" />
+    <title>Hope</title>
+</head>
+<body>
+<header>
+    <div class="logoProfile">
+        <div class="logo">
+            <a href="#">
+                <span class="logoFrame">
+                    <img src="{% static '/images/logo.png' %}" alt="logo" />
+                </span>
+            </a>
+        </div>
+        <div class="profile">
+            <div class="profileContainer">
+                <div class="profileFrame">
+                    <img
+                        src="{% static '/images/profile-image.png' %}"
+                        alt="" />
+                </div>
+                <span class="name">{{ request.user.profile.name }}</span>
+                <div class="downArrow">
+                    <a href="{% url 'therapist_profile' %}">
+                        <img
+                            src="{% static '/images/arrow-down.svg' %}"
+                            alt="down arrow" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="container">
+    <nav>
+        <ul>
+            <li class="nav-item">
+                <a href="{% url 'therapist_dashboard' %}">
+                    <div class="iconFrame">
+                        <img src="{% static '/images/dashboard.svg' %}" alt="home" />
+                    </div>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'problems' %}">
+                    <div class="iconFrame">
+                        <img src="{% static '/images/therapist.svg' %}" alt="therapist" />
+                    </div>
+                    Problems
+                </a>
+            </li>
+        </ul>
+        <div class="logout">
+            <a href="#" id="logoutButton">
+                <div class="iconFrame">
+                    <img src="{% static '/images/logout.svg' %}" alt="" />
+                </div>
+                Logout
+            </a>
+        </div>
+    </nav>
+    <div class="content">
+        <section id="profile">
+            <h4>Profile</h4>
+            <div class="profileContainer">
+                <div class="container">
+                    <div class="profilePicture">
+                        <img src="{% static '/images/profile-background.png' %}" alt="background" />
+                    </div>
+                    <div class="profileDetails">
+                        <form action="#" method="post">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="name">
+                                    <div class="label-input">
+                                        <label for="name">Name</label>
+                                    </div>
+                                    <input type="text" id="name" value="{{ therapist.name }}" name="name" />
+                                </div>
+                                <div class="phone">
+                                    <div class="label-input">
+                                        <label for="contact_number">Phone</label>
+                                    </div>
+                                    <input type="tel" id="contact_number" value="{{ therapist.contact_number }}" name="contact_number" readonly />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="email">
+                                    <div class="label-input">
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <input type="email" value="{{ therapist.email }}" id="email" name="email" />
+                                </div>
+                                <div class="joinedDate">
+                                    <div class="label-input">
+                                        <label for="joined_date">Joined Date</label>
+                                    </div>
+                                    <input type="text" value="{{ therapist.joined_from.date }}" id="joined_date" name="joined_date" readonly />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="totalSolution">
+                                    <div class="label-input">
+                                        <label for="total_solutions">Total Solutions Posted</label>
+                                    </div>
+                                    <input type="text" value="{{ total_solutions }}" id="total_solutions" name="total_solutions" readonly />
+                                </div>
+                                <div class="age">
+                                    <div class="label-input">
+                                        <label for="age">Age</label>
+                                    </div>
+                                    <input type="text" value="{{ therapist.age }}" id="age" name="age" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="gender">
+                                    <div class="label-input">
+                                        <label for="gender">Gender</label>
+                                        <div class="selector">
+                                            <input type="radio" id="male" name="gender" value="male" {% if therapist.gender == 'male' %}checked{% endif %} readonly>
+                                            <label for="male">Male</label>
+                                            <input type="radio" id="female" name="gender" value="female" {% if therapist.gender == 'female' %}checked{% endif %} readonly>
+                                            <label for="female">Female</label>
+                                            <input type="radio" id="others" name="gender" value="others" {% if therapist.gender == 'others' %}checked{% endif %} readonly>
+                                            <label for="others">Others</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <button type="submit">Edit profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="modal" id="logoutModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="heading">Logout</div>
+        <div class="question">Are you sure want to logout?</div>
+        <form method="post" action="{% url 'logout_user' %}">
+            {% csrf_token %}
+            <div class="buttonContainer">
+                <button type="button" class="borderButton" onclick="closeLogoutModal()">Cancel</button>
+                <button type="submit" class="backgroundButton">Logout</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static '/js/logout-modal.js' %}"></script>
+</body>
+</html>

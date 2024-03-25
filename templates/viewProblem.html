@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+        <link rel="stylesheet" href="{% static '/css/font.css' %}" />
+        <title>Hope</title>
+    </head>
+    <body>
+        <header>
+            <div class="logoProfile">
+                <div class="logo">
+                    <a href="#">
+                        <span class="logoFrame">
+                            <img
+                                src="{% static '/images/logo.png' %}"
+                                alt="logo" />
+                        </span>
+                    </a>
+                </div>
+                <div class="profile">
+                    <div class="profileContainer">
+                        <div class="profileFrame">
+                            <img
+                                src="{% static '/images/profile-image.png' %}"
+                                alt="" />
+                        </div>
+                        <span class="name">{{ request.user.profile.name }}</span>
+                        <div class="downArrow">
+                            <a href="{% url 'therapist_profile' %}">
+                                <img
+                                    src="{% static '/images/arrow-down.svg' %}"
+                                    alt="down arrow" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <a href="{% url 'therapist_dashboard' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/dashboard.svg' %}"
+                                    alt="home" />
+                            </div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'problems' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/therapist.svg' %}"
+                                    alt="therapist" />
+                            </div>
+                            Problems
+                        </a>
+                    </li>
+                </ul>
+                <div class="logout">
+                    <a href="#" id="logoutButton">
+                        <div class="iconFrame">
+                            <img
+                                src="{% static '/images/logout.svg' %}"
+                                alt="" />
+                        </div>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+            <div class="content">
+                <section id="viewProblem">
+                    <div class="container">
+                        <div class="top">
+                            <h4>{{problem.title}}</h4>
+                            <div class="breadcrumb">
+                                <a href="{% url 'problems' %}">Problem </a>
+                                <span class="slash">/</span>
+                                <a href="#"
+                                    >{{problem.title}}</a
+                                >
+                            </div>
+                            <div class="bottom">
+                                <div class="problemSection">
+                                    <div class="problem">
+                                        <div class="subject">
+                                            <div class="profileName">
+                                                <div class="profileImage">
+                                                    <img
+                                                        src="{% static '/images/problem-user.png' %}"
+                                                        alt="" />
+                                                </div>
+                                                <div class="name">
+                                                    {{problem.patient.name}}
+                                                </div>
+                                            </div>
+                                            <div class="nameQuestion">
+                                                <div class="question">
+                                                    {{problem.description}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="buttonContainer">
+                                            <button class="backgroundButton">
+                                                Post solution
+                                            </button>
+                                            <div class="modal" id="myModal">
+                                                <div class="modal-content">
+                                                    <span class="close"
+                                                        >&times;</span
+                                                    >
+                                                    <div class="heading">
+                                                        Post solution
+                                                    </div>
+                                                    <div class="subHeading">
+                                                        {{problem.title}}
+                                                    </div>
+                                                    <div class="question">
+                                                        {{problem.description}}
+                                                    </div>
+                                                    <form action="{% url 'create_solution' problem_id=problem.id %}" method="post">
+                                                        {%  csrf_token %}
+                                                        <textarea
+                                                            name="solution"
+                                                            id=""
+                                                            cols="20"
+                                                            rows="10"
+                                                            placeholder="Write your solution here..."></textarea>
+                                                        <div
+                                                            class="buttonContainer">
+                                                            <button
+                                                                type="reset"
+                                                                class="borderButton">
+                                                                Cancel
+                                                            </button>
+                                                            <button
+                                                                type="submit"
+                                                                class="backgroundButton">
+                                                                Post
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="solutionSection">
+                                    <ul>
+                                        {% for solution in solutions %}
+                                        <li>
+                                            <div class="solutions">
+                                                <div class="subject">
+                                                    <div class="profileName">
+                                                        <div
+                                                            class="profileImage">
+                                                            <img
+                                                                src="{% static '/images/problem-user.png' %}"
+                                                                alt="" />
+                                                        </div>
+                                                        <div class="name">
+                                                            {{ solution.therapist.name }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="nameSolution">
+                                                        <div class="solution">
+                                                            {{solution.solution}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="modal" id="logoutModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="heading">Logout</div>
+                <div class="question">Are you sure want to logout?</div>
+                <form method="post" action="{% url 'logout_user' %}">
+                    {% csrf_token %}
+                    <div class="buttonContainer">
+                        <button type="button" class="borderButton" onclick="closeLogoutModal()">Cancel</button>
+                        <button type="submit" class="backgroundButton">Logout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="{% static 'js/app.js' %}"></script>
+        <script src="{% static '/js/logout-modal.js' %}"></script>
+        <script src="{% static '/js/modal.js' %}"></script>
+    </body>
+</html>

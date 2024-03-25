@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hope</title>
+        <link rel="stylesheet" href="{% static '../static/css/style.css' %}" />
+        <link rel="stylesheet" href="{% static '../static/css/font.css' %}">
+    </head>
+    <body>
+        <section id="login">
+            <div class="left">
+                <img src="{% static '/images/login-background.png' %}" alt="">
+            </div>
+            <div class="right">
+                <div class="rightContent">
+                    <div class="logo">
+                        <img
+                            src="{% static '/images/logo.png' %}"
+                            alt="logo"
+                        />
+                    </div>
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

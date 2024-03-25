@@ -1,0 +1,1940 @@
+html {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    background: transparent;
+    font-weight: normal;
+    text-decoration: none;
+    outline: none;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+button {
+    font-family: "InterRegular";
+}
+body {
+    font-family: "InterRegular";
+    color: #1a1919;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+a {
+    color: #000000 !important;
+    font-family: "InterRegular";
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+.wrapper {
+    max-width: 1800px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+#selectUser {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    padding: 56px;
+    border-radius: 24px;
+}
+
+#selectUser p.welcome {
+    font-size: 22px;
+    color: #b0b3c1;
+    margin-bottom: 15px;
+}
+
+#selectUser p.title {
+    color: #696b78;
+    font-size: 30px;
+    font-family: "InterMedium";
+    margin-bottom: 30px;
+}
+
+#selectUser .registration-link {
+    padding: 15px 20px;
+    border: 1px solid #F5F5F5;
+    border-radius: 10px;
+    /* width: 41%; */
+    text-align: center;
+    margin-bottom: 22px;
+    color: #828682 !important;
+}
+
+#login {
+    display: flex;
+    background-color: #fbfcff;
+}
+#login .left {
+    display: flex;
+    background: url(../images/login-image.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 832px;
+    height: 100vh;
+    width: 50%;
+    border-radius: 0 80px 80px 0;
+}
+#login .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#login .right .rightContent {
+    position: absolute;
+    left: 50%;
+    transform: translate(60%, 0%);
+    width: 100%;
+    padding: 56px;
+    /* display: flex; */
+}
+#login .right .rightContent .logo {
+    width: 130px;
+    margin-bottom: 20px;
+}
+#login .right .rightContent form {
+    width: 670px;
+    padding: 10px 40px;
+    background-color: #ffffff;
+    box-shadow: 6px 6px 54px 0px #86889140;
+    border-radius: 24px;
+}
+#login .right .rightContent form .welcome {
+    font-size: 22px;
+    color: #b0b3c1;
+    margin-bottom: 10px;
+}
+#login .right .rightContent form .title {
+    color: #696b78;
+    font-size: 30px;
+    font-family: "InterMedium";
+    margin-bottom: 30px;
+}
+#login .right .rightContent form .field {
+    margin-bottom: 15px;
+}
+#login .right .rightContent form .gender {
+    margin-bottom: 15px;
+    display: flex;
+}
+#login .right .rightContent form .gender .selector {
+    display: flex;
+    gap: 10px;
+}
+#login .right .rightContent form .field label {
+    color: #868891;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+#login .right .rightContent form .field input, #login .right .rightContent form .field .input{
+    border: 1px solid #f2eef3;
+    border-radius: 8px !important;
+    width: 100%;
+    padding: 15px 18px;
+    margin-top: 0;
+}
+#login .right .rightContent form .passwordContainer {
+    display: flex;
+    justify-content: space-between;
+}
+#login .right .rightContent form .passwordContainer .field {
+    width: 48%;
+}
+#login .right .rightContent form .therapistField {
+    display: flex;
+    flex-direction: column;
+}
+#login .right .rightContent form .therapistField .flexContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#login .right .rightContent form .therapistField .flexContainer .field {
+    width: 48%;
+}
+#login .right .rightContent form span {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+#login .right .rightContent form .loginButton {
+    width: 260px;
+    padding: 10px 0;
+    background-color: #8ac185;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: "InterMedium";
+    text-align: center;
+}
+#login .right .rightContent form .account {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+#login .right .rightContent form .account p {
+    color: #7c847c;
+    font-size: 14px;
+    font-family: "InterLight";
+    text-align: center;
+    margin-right: 4px;
+}
+#login .right .rightContent form .account p a {
+    color: #8AC185 !important;
+    border-bottom: 1px solid #8AC185;
+}
+
+header {
+    margin-left: 30px;
+}
+
+header .logoProfile {
+    display: flex;
+    justify-content: space-between;
+    gap: 107px;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+}
+header .logoProfile .logo {
+    margin-left: 70px;
+}
+header .logoProfile .logoFrame {
+    display: flex;
+    width: 70px;
+}
+
+header .logoProfile .profile {
+    width: 1644px;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: #fcffff;
+    border: 1px solid #e7f0e6;
+    border-right: none;
+    border-radius: 60px 0px 0px 0px;
+    color: #3f4147;
+}
+header .logoProfile .profile .profileContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+    margin-right: 50px;
+}
+
+header .logoProfile .profile .name {
+    color: #3f4147;
+}
+
+#container {
+    display: flex;
+    height: 100vh;
+}
+
+#container nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #e7f0e6;
+    background: #fcffff;
+    padding: 0 22px;
+    width: 14.5%;
+    height: 91vh;
+    position: fixed;
+    top: 8.5%;
+}
+
+#container nav ul li {
+    display: flex;
+    padding: 10px 50px 10px 10px;
+    margin-bottom: 15px;
+}
+
+#container nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #989d98 !important;
+}
+#container nav ul li a.active {
+    width: 100%;
+    background-color: #8ac185;
+    padding: 10px 50px 10px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff !important;
+}
+
+#container nav ul li a .iconFrame {
+    display: flex;
+    align-items: center;
+    color: #989d98;
+    width: 25px;
+}
+
+#container nav .logout {
+    display: flex;
+    margin-bottom: 24px;
+}
+
+#container nav .logout a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #989d98 !important;
+}
+
+#container .content {
+    padding: 17px 50px;
+    width: 85%;
+    overflow-y: scroll;
+    position: relative;
+    top: 9%;
+    left: 14.5%;
+}
+
+#dashboard h4 {
+    color: #828682;
+    font-size: 18px;
+    font-family: "InterMedium";
+    margin-bottom: 10px;
+}
+#dashboard .dashboardCards {
+    display: flex;
+    gap: 20px;
+}
+#dashboard .dashboardCards .card {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+#dashboard .dashboardCards .card .left {
+    padding: 25px 20px;
+    background: #8ac185;
+    border-radius: 16px 0px 0px 16px;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: #e0f1de;
+}
+#dashboard .dashboardCards .card .left .iconFrame {
+    width: 28px;
+}
+
+#dashboard .dashboardCards .card .right {
+    background: #f6fff5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0px 15px 15px 0px;
+    padding-left: 16px;
+}
+
+#dashboard .dashboardCards .card .right .miniTitle {
+    font-size: 15px;
+    color: #a3a3a3;
+}
+
+#dashboard .dashboardCards .card .right .count {
+    font-size: 18px;
+    color: #7e807d;
+    font-family: "InterSemibold";
+    margin-top: 4px;
+}
+
+#dashboard .bottom {
+    display: flex;
+    justify-content: space-between;
+}
+#dashboard .bottom .graphContainer {
+    width: 62%;
+}
+#dashboard .bottom .graphContainer .subTitle {
+    margin: 20px 0 12px 0;
+    font-family: "InterMedium";
+    font-size: 18px;
+}
+#dashboard .bottom .graphContainer .chart {
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    padding: 40px;
+    height: 70vh;
+}
+#dashboard .bottom .tableContainer {
+    width: 35%;
+}
+#dashboard .bottom .tableContainer .subTitle {
+    margin: 20px 0 12px 0;
+    font-family: "InterMedium";
+    font-size: 18px;
+}
+#dashboard .bottom .tableContainer table {
+    width: 100%;
+    border: 1px solid #f5f5f5;
+    border-radius: 16px !important;
+}
+#dashboard .bottom .tableContainer table thead {
+    color: #9ea8a7;
+}
+#dashboard .bottom .tableContainer table thead th {
+    padding: 22px 40px;
+}
+
+#dashboard .bottom .tableContainer table tbody td {
+    color: #6e7978;
+}
+th,
+td {
+    border-bottom: 1px solid #f5f5f5;
+    text-align: left;
+    padding: 22px 30px;
+}
+
+#dashboard .bottom .tableContainer table tbody td button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: #8ac185;
+    color: white;
+    cursor: pointer;
+}
+
+#therapist h4 {
+    color: #828682;
+    font-size: 18px;
+    font-family: "InterMedium";
+    margin-bottom: 10px;
+}
+
+#therapist table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #f5f5f5;
+    border-radius: 16px !important;
+}
+#therapist table thead tr th {
+    color: #989d98;
+}
+#therapist table thead th:nth-child(3) {
+    text-align: left;
+}
+#therapist table thead th:nth-child(4) {
+    text-align: center;
+}
+#therapist table thead th:last-child {
+    text-align: right;
+}
+#therapist table tbody {
+    cursor: pointer;
+}
+#therapist table tbody td:nth-child(3) {
+    text-align: left;
+}
+#therapist table tbody td:nth-child(4) {
+    text-align: center;
+}
+#therapist table tbody td:last-child {
+    text-align: right;
+}
+#therapist table tbody tr td {
+    color: #7c847c;
+    font-family: "InterMedium";
+}
+#therapist h4 {
+    color: #828682;
+    font-size: 18px;
+    font-family: "InterMedium";
+    margin-bottom: 10px;
+}
+
+#user h4 {
+    color: #828682;
+    font-size: 18px;
+    font-family: "InterMedium";
+    margin-bottom: 10px;
+}
+
+#user table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #f5f5f5;
+    border-radius: 16px !important;
+}
+#user table thead tr th {
+    color: #989d98;
+}
+#user table thead th:nth-child(3) {
+    text-align: left;
+}
+#user table thead th:nth-child(4) {
+    text-align: center;
+}
+#user table thead th:last-child {
+    text-align: right;
+}
+#user table tbody {
+    cursor: pointer;
+}
+#user table tbody td:nth-child(3) {
+    text-align: left;
+}
+#user table tbody td:nth-child(4) {
+    text-align: center;
+}
+#user table tbody td:last-child {
+    text-align: right;
+}
+#user table tbody tr td {
+    color: #7c847c;
+    font-family: "InterMedium";
+}
+
+/* #therapist table .pagination {
+    display: flex;
+    justify-content: center;
+}
+#therapist table .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+#therapist table .pagination button:hover {
+    background-color: #0056b3;
+} */
+
+#therapistSingle .container {
+    display: flex;
+    flex-direction: column;
+}
+#therapistSingle .container .top {
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+#therapistSingle .container .top .name {
+    color: #828682;
+    font-size: 20px;
+    font-family: "InterMedium";
+}
+#therapistSingle .container .top .breadcrumb {
+    margin-top: 12px;
+}
+#therapistSingle .container .top .breadcrumb a {
+    color: #d1d1d1 !important;
+}
+#therapistSingle .container .top .breadcrumb .slash {
+    color: #d1d1d1;
+}
+
+#therapistSingle .container .bottom .therapistDetails {
+    display: flex;
+    justify-content: space-between;
+}
+#therapistSingle .container .bottom .therapistDetails .left {
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+    padding: 32px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 71vh;
+}
+#therapistSingle .container .bottom .therapistDetails .left .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .left
+    .profile
+    .profileImage {
+    width: 100px;
+    margin-bottom: 16px;
+}
+#therapistSingle .container .bottom .therapistDetails .left .profile p.name {
+    color: #6e7978;
+    font-family: "InterMedium";
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .left
+    .profile
+    p.therapistId {
+    color: #4a4c51;
+    font-size: 16px;
+    text-align: center;
+}
+#therapistSingle .container .bottom .therapistDetails .left .wholeInformation {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .left
+    .wholeInformation
+    .informationContainer {
+    border: 1px solid #f5f5f5;
+    padding: 20px 16px;
+    border-radius: 8px;
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .left
+    .wholeInformation
+    .heading {
+    color: #4a4c51;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .left
+    .wholeInformation
+    .contentText {
+    color: #2f3033;
+    font-family: "InterMedium";
+}
+#therapistSingle .container .bottom .therapistDetails .right {
+    width: 67%;
+}
+#therapistSingle .container .bottom .therapistDetails .right .contactDetails {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 18px 8px;
+    width: 100%;
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .contactDetails
+    .informationContainer {
+    padding: 20px 33px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #f5f5f5;
+    width: 265px;
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .contactDetails
+    .informationContainer:last-child {
+    border: none;
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .contactDetails
+    .heading {
+    color: #4a4c51;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .contactDetails
+    .contentText {
+    color: #2f3033;
+    font-family: "InterMedium";
+}
+
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .recentSolutions
+    h4 {
+    font-size: 20px;
+    color: #828682;
+    margin-bottom: 16px;
+    margin-top: 20px;
+}
+
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .recentSolutions
+    ul
+    li {
+    border: 1px solid #f5f5f5;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 8px;
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .recentSolutions
+    ul
+    li
+    .headingButton {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .recentSolutions
+    ul
+    li
+    .headingButton
+    .solutionHeading {
+    color: #989d98;
+    font-family: "InterMedium";
+}
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .recentSolutions
+    ul
+    li
+    .headingButton
+    a {
+    color: #8ac185 !important;
+    display: flex;
+    font-size: 18px;
+    font-family: "InterRegular";
+}
+
+#therapistSingle
+    .container
+    .bottom
+    .therapistDetails
+    .right
+    .recentSolutions
+    ul
+    li
+    .solution
+    p.solutions {
+    color: #7c847c;
+    line-height: 28px;
+}
+
+#userSingle .container {
+    display: flex;
+    flex-direction: column;
+}
+#userSingle .container .top {
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+#userSingle .container .top .name {
+    color: #828682;
+    font-size: 20px;
+    font-family: "InterMedium";
+}
+#userSingle .container .top .breadcrumb {
+    margin-top: 12px;
+}
+#userSingle .container .top .breadcrumb a {
+    color: #d1d1d1 !important;
+}
+#userSingle .container .top .breadcrumb .slash {
+    color: #d1d1d1;
+}
+
+#userSingle .container .bottom .userDetails .left {
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    gap: 20px;
+}
+#userSingle .container .bottom .userDetails .left .profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-right: 2px solid #f5f5f5;
+    width: 265px;
+}
+#userSingle .container .bottom .userDetails .left .profile .profileImage {
+    width: 100px;
+    margin-bottom: 16px;
+}
+
+#userSingle .container .bottom .userDetails .left .profile .nameUserId p.name {
+    color: #6e7978;
+    font-family: "InterMedium";
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+#userSingle
+    .container
+    .bottom
+    .userDetails
+    .left
+    .profile
+    .nameUserId
+    p.userId {
+    color: #4a4c51;
+    font-size: 16px;
+    text-align: center;
+}
+
+#userSingle .container .bottom .userDetails .left {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 18px 8px;
+    width: 100%;
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+}
+#userSingle .container .bottom .userDetails .left .informationContainer {
+    padding: 20px 33px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #f5f5f5;
+    width: 265px;
+}
+#userSingle
+    .container
+    .bottom
+    .userDetails
+    .left
+    .informationContainer:last-child {
+    border: none;
+}
+#userSingle .container .bottom .userDetails .left .heading {
+    color: #4a4c51;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+#userSingle .container .bottom .userDetails .left .contentText {
+    color: #2f3033;
+    font-family: "InterMedium";
+}
+
+#userSingle .container .bottom .userDetails .right .recentSolutions h4 {
+    font-size: 20px;
+    color: #828682;
+    margin-bottom: 16px;
+    margin-top: 20px;
+}
+
+#userSingle
+    .container
+    .bottom
+    .userDetails
+    .right
+    .recentSolutions
+    .headingButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#userSingle
+    .container
+    .bottom
+    .userDetails
+    .right
+    .recentSolutions
+    .headingButton
+    h4 {
+    font-size: 20px;
+    color: #828682;
+    margin-bottom: 16px;
+    margin-top: 20px;
+}
+#userSingle
+    .container
+    .bottom
+    .userDetails
+    .right
+    .recentSolutions
+    .headingButton
+    button.backgroundButton {
+    padding: 8px 20px;
+    border-radius: 6px;
+    background-color: #8ac185;
+    color: white;
+    cursor: pointer;
+}
+
+#userSingle .container .bottom .userDetails .right .recentSolutions ul li {
+    border: 1px solid #f5f5f5;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 8px;
+}
+#userSingle
+    .container
+    .bottom
+    .userDetails
+    .right
+    .recentSolutions
+    ul
+    li
+    .headingButton {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#userSingle
+    .container
+    .bottom
+    .userDetails
+    .right
+    .recentSolutions
+    ul
+    li
+    .headingButton
+    .solutionHeading {
+    color: #989d98;
+    font-family: "InterMedium";
+}
+#userSingle
+    .container
+    .bottom
+    .userDetails
+    .right
+    .recentSolutions
+    ul
+    li
+    .headingButton
+    a {
+    color: #8ac185 !important;
+    display: flex;
+    font-size: 18px;
+    font-family: "InterRegular";
+}
+
+#userSingle
+    .container
+    .bottom
+    .userDetails
+    .right
+    .recentSolutions
+    ul
+    li
+    .solution
+    p.solutions {
+    color: #7c847c;
+    line-height: 28px;
+}
+
+#therapist-dashboard h4 {
+    color: #828682;
+    font-size: 18px;
+    font-family: "InterMedium";
+    margin-bottom: 10px;
+}
+#therapist-dashboard .dashboardCards {
+    display: flex;
+    gap: 20px;
+}
+#therapist-dashboard .dashboardCards .card {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+#therapist-dashboard .dashboardCards .card .left {
+    padding: 25px 20px;
+    background: #8ac185;
+    border-radius: 16px 0px 0px 16px;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: #e0f1de;
+}
+#therapist-dashboard .dashboardCards .card .left .iconFrame {
+    width: 28px;
+}
+
+#therapist-dashboard .dashboardCards .card .right {
+    background: #f6fff5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0px 15px 15px 0px;
+    padding-left: 16px;
+}
+
+#therapist-dashboard .dashboardCards .card .right .miniTitle {
+    font-size: 15px;
+    color: #a3a3a3;
+}
+
+#therapist-dashboard .dashboardCards .card .right .count {
+    font-size: 18px;
+    color: #7e807d;
+    font-family: "InterSemibold";
+    margin-top: 4px;
+}
+
+#therapist-dashboard .bottom {
+    display: flex;
+    justify-content: space-between;
+}
+#therapist-dashboard .bottom .graphContainer {
+    width: 50%;
+    height: 65vh;
+}
+#therapist-dashboard .bottom .graphContainer .subTitle {
+    margin: 20px 0 12px 0;
+    font-family: "InterMedium";
+    font-size: 18px;
+    color: #828682;
+}
+#therapist-dashboard .bottom .graphContainer .chart {
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    padding: 5px 40px;
+}
+#therapist-dashboard .bottom .tableContainer {
+    width: 48%;
+}
+#therapist-dashboard .bottom .tableContainer .subTitle {
+    margin: 20px 0 12px 0;
+    font-family: "InterMedium";
+    font-size: 18px;
+    color: #828682;
+}
+#therapist-dashboard .bottom .tableContainer ul {
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+}
+#therapist-dashboard .bottom .tableContainer ul li {
+    border-bottom: 1px solid #f5f5f5;
+    padding: 20px 32px;
+}
+#therapist-dashboard .bottom .tableContainer ul li:last-child {
+    border-bottom: none;
+}
+#therapist-dashboard .bottom .tableContainer ul li .heading {
+    color: #989d98;
+    margin-bottom: 12px;
+}
+#therapist-dashboard .bottom .tableContainer ul li .problem {
+    color: #7c847c;
+    margin-bottom: 16px;
+}
+#therapist-dashboard .bottom .tableContainer ul li .buttonContainer {
+    display: flex;
+    justify-content: end;
+}
+#therapist-dashboard .bottom .tableContainer ul li .buttonContainer button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: #8ac185;
+    color: white;
+    cursor: pointer;
+}
+#therapist-dashboard h4 {
+    color: #828682;
+    font-size: 18px;
+    font-family: "InterMedium";
+    margin-bottom: 10px;
+}
+#therapist-dashboard .dashboardCards {
+    display: flex;
+    gap: 20px;
+}
+#therapist-dashboard .dashboardCards .card {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+#therapist-dashboard .dashboardCards .card .left {
+    padding: 25px 20px;
+    background: #8ac185;
+    border-radius: 16px 0px 0px 16px;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: #e0f1de;
+}
+#therapist-dashboard .dashboardCards .card .left .iconFrame {
+    width: 28px;
+}
+
+#therapist-dashboard .dashboardCards .card .right {
+    background: #f6fff5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0px 15px 15px 0px;
+    padding-left: 16px;
+}
+
+#therapist-dashboard .dashboardCards .card .right .miniTitle {
+    font-size: 15px;
+    color: #a3a3a3;
+}
+
+#therapist-dashboard .dashboardCards .card .right .count {
+    font-size: 18px;
+    color: #7e807d;
+    font-family: "InterSemibold";
+    margin-top: 4px;
+}
+
+#therapist-dashboard .bottom {
+    display: flex;
+    justify-content: space-between;
+}
+#therapist-dashboard .bottom .graphContainer {
+    width: 50%;
+    height: 65vh;
+}
+#therapist-dashboard .bottom .graphContainer .subTitle {
+    margin: 20px 0 12px 0;
+    font-family: "InterMedium";
+    font-size: 18px;
+    color: #828682;
+}
+#therapist-dashboard .bottom .graphContainer .chart {
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    padding: 5px 40px;
+}
+#therapist-dashboard .bottom .tableContainer {
+    width: 48%;
+}
+#therapist-dashboard .bottom .tableContainer .subTitle {
+    margin: 20px 0 12px 0;
+    font-family: "InterMedium";
+    font-size: 18px;
+    color: #828682;
+}
+#therapist-dashboard .bottom .tableContainer ul {
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+}
+#therapist-dashboard .bottom .tableContainer ul li {
+    border-bottom: 1px solid #f5f5f5;
+    padding: 20px 32px;
+}
+#therapist-dashboard .bottom .tableContainer ul li:last-child {
+    border-bottom: none;
+}
+#therapist-dashboard .bottom .tableContainer ul li .heading {
+    color: #989d98;
+    margin-bottom: 12px;
+}
+#therapist-dashboard .bottom .tableContainer ul li .problem {
+    color: #7c847c;
+    margin-bottom: 16px;
+}
+#therapist-dashboard .bottom .tableContainer ul li .buttonContainer {
+    display: flex;
+    justify-content: end;
+}
+#therapist-dashboard .bottom .tableContainer ul li .buttonContainer button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: #8ac185;
+    color: white;
+    cursor: pointer;
+}
+#user-dashboard h4 {
+    color: #828682;
+    font-size: 18px;
+    font-family: "InterMedium";
+    margin-bottom: 10px;
+}
+#user-dashboard .dashboardCards {
+    display: flex;
+    gap: 20px;
+}
+#user-dashboard .dashboardCards .card {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+#user-dashboard .dashboardCards .card .left {
+    padding: 25px 20px;
+    background: #8ac185;
+    border-radius: 16px 0px 0px 16px;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: #e0f1de;
+}
+#user-dashboard .dashboardCards .card .left .iconFrame {
+    width: 28px;
+}
+
+#user-dashboard .dashboardCards .card .right {
+    background: #f6fff5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0px 15px 15px 0px;
+    padding-left: 16px;
+}
+
+#user-dashboard .dashboardCards .card .right .miniTitle {
+    font-size: 15px;
+    color: #a3a3a3;
+}
+
+#user-dashboard .dashboardCards .card .right .count {
+    font-size: 18px;
+    color: #7e807d;
+    font-family: "InterSemibold";
+    margin-top: 4px;
+}
+
+#user-dashboard .bottom {
+    display: flex;
+    justify-content: space-between;
+}
+#user-dashboard .bottom .graphContainer {
+    width: 50%;
+    height: 65vh;
+}
+#user-dashboard .bottom .graphContainer .subTitle {
+    margin: 20px 0 12px 0;
+    font-family: "InterMedium";
+    font-size: 18px;
+    color: #828682;
+}
+#user-dashboard .bottom .graphContainer .chart {
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    padding: 5px 40px;
+}
+#user-dashboard .bottom .tableContainer {
+    width: 48%;
+}
+#user-dashboard .bottom .tableContainer .subTitle {
+    margin: 20px 0 12px 0;
+    font-family: "InterMedium";
+    font-size: 18px;
+    color: #828682;
+}
+#user-dashboard .bottom .tableContainer ul {
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+}
+#user-dashboard .bottom .tableContainer ul li {
+    border-bottom: 1px solid #f5f5f5;
+    padding: 20px 32px;
+}
+#user-dashboard .bottom .tableContainer ul li:last-child {
+    border-bottom: none;
+}
+#user-dashboard .bottom .tableContainer ul li .heading {
+    color: #989d98;
+    margin-bottom: 12px;
+}
+#user-dashboard .bottom .tableContainer ul li .problem {
+    color: #7c847c;
+    margin-bottom: 16px;
+}
+#user-dashboard .bottom .tableContainer ul li .buttonContainer {
+    display: flex;
+    justify-content: end;
+}
+#user-dashboard .bottom .tableContainer ul li .buttonContainer button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: #8ac185;
+    color: white;
+    cursor: pointer;
+}
+
+#problems h4 {
+    color: #828682;
+    font-size: 20px;
+    font-family: "InterMedium";
+    margin-bottom: 16px;
+}
+#problems .tableContainer ul {
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+}
+#problems .tableContainer ul li {
+    padding: 20px 32px;
+    border-bottom: 1px solid #f5f5f5;
+}
+#problems .tableContainer ul li:last-child {
+    border-bottom: none;
+}
+
+#problems .tableContainer ul li .heading {
+    color: #989d98;
+    margin-bottom: 12px;
+}
+#problems .tableContainer ul li .problem {
+    color: #989d98;
+    margin-bottom: 16px;
+}
+#problems .tableContainer ul li .buttonContainer {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+}
+#problems .tableContainer ul li .buttonContainer button.borderButton {
+    border: 1px solid #989d98;
+    padding: 8px 40px;
+    border-radius: 6px;
+    color: #989d98;
+    cursor: pointer;
+}
+#problems .tableContainer ul li .buttonContainer button.backgroundButton {
+    padding: 8px 20px;
+    border-radius: 6px;
+    background-color: #8ac185;
+    color: white;
+    cursor: pointer;
+}
+
+#viewProblem .container .top h4 {
+    color: #828682;
+    font-size: 20px;
+    font-family: "InterMedium";
+    margin-bottom: 12px;
+}
+#viewProblem .container .top .breadcrumb {
+    margin-bottom: 16px;
+}
+#viewProblem .container .top .breadcrumb a {
+    color: #d1d1d1 !important;
+}
+#viewProblem .container .top .breadcrumb .slash {
+    color: #d1d1d1 !important;
+}
+#viewProblem .container .top .bottom {
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+    padding: 32px;
+}
+#viewProblem .container .top .bottom .problemSection {
+    border-bottom: 1px solid #dddddd;
+}
+#viewProblem .container .top .bottom .problemSection .problem {
+    display: flex;
+    justify-content: space-between;
+}
+
+#viewProblem
+    .container
+    .top
+    .bottom
+    .problemSection
+    .problem
+    .subject
+    .profileName {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#viewProblem
+    .container
+    .top
+    .bottom
+    .problemSection
+    .problem
+    .subject
+    .profileName
+    .profileImage {
+    width: 40px;
+}
+
+#viewProblem
+    .container
+    .top
+    .bottom
+    .problemSection
+    .problem
+    .subject
+    .profileName
+    .name {
+    color: #989d98;
+}
+#viewProblem
+    .container
+    .top
+    .bottom
+    .problemSection
+    .problem
+    .subject
+    .nameQuestion {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+#viewProblem
+    .container
+    .top
+    .bottom
+    .problemSection
+    .problem
+    .subject
+    .nameQuestion
+    .question {
+    margin-left: 48px;
+    color: #7c847c;
+}
+
+#viewProblem
+    .container
+    .top
+    .bottom
+    .problemSection
+    .problem
+    .buttonContainer
+    button.backgroundButton {
+    padding: 8px 20px;
+    border-radius: 6px;
+    background-color: #8ac185;
+    color: white;
+    cursor: pointer;
+}
+#viewProblem .container .top .bottom .solutionSection {
+    margin-top: 20px;
+}
+
+#viewProblem
+    .container
+    .top
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .profileName {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#viewProblem
+    .container
+    .top
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .profileName
+    .profileImage {
+    width: 40px;
+}
+#viewProblem
+    .container
+    .top
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .profileName
+    .name {
+    color: #989d98;
+}
+#viewProblem
+    .container
+    .top
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .nameSolution {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+#viewProblem
+    .container
+    .top
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .nameSolution
+    .solution {
+    margin-left: 48px;
+    color: #7c847c;
+    line-height: 27px;
+}
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #00000040;
+    backdrop-filter: blur(2px); /* Add a blur effect to the background */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 11% auto;
+    padding: 48px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 20px;
+}
+
+.modal .modal-content .heading {
+    color: #8ac185;
+    font-size: 24px;
+    font-family: "InterMedium";
+    margin-bottom: 24px;
+}
+.modal .modal-content .subHeading {
+    color: #828682;
+    font-size: 20px;
+    font-family: "InterMedium";
+    margin-bottom: 12px;
+}
+.modal .modal-content .question {
+    color: #989d98;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.modal .modal-content form input {
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    resize: none;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 25px;
+}
+
+.modal .modal-content form textarea {
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    resize: none;
+    width: 100%;
+    padding: 16px 16px 120px 16px;
+}
+.modal .modal-content form .buttonContainer {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    gap: 8px;
+    margin-top: 40px;
+}
+.modal .modal-content form .buttonContainer button.borderButton {
+    border: 1px solid #989d98;
+    padding: 8px 40px;
+    border-radius: 6px;
+    color: #989d98;
+    cursor: pointer;
+}
+.modal .modal-content form .buttonContainer button.backgroundButton {
+    padding: 8px 40px;
+    border-radius: 6px;
+    background-color: #8ac185;
+    color: white;
+    cursor: pointer;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#profile h4 {
+    color: #828682;
+    font-size: 20px;
+    font-family: "InterMedium";
+    border-bottom: 1px solid #f1f7f1;
+    margin-bottom: 24px;
+}
+#profile .profileContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#profile .profileContainer .container {
+    padding: 40px;
+    border: 1px solid #d1d1d1;
+    border-radius: 20px;
+    width: 70%;
+}
+#profile .profileContainer .container .profilePicture {
+    width: 110px;
+    margin-bottom: 32px;
+}
+
+#profile .profileContainer .container .profileDetails form {
+    display: flex;
+    flex-direction: column;
+}
+#profile .profileContainer .container .profileDetails form .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 21px;
+}
+#profile .profileContainer .container .profileDetails form .form-row > div {
+    flex: 1;
+    margin-right: 10px;
+}
+#profile
+    .profileContainer
+    .container
+    .profileDetails
+    form
+    .form-row
+    > div:last-child {
+    margin-right: 0;
+}
+
+#profile
+    .profileContainer
+    .container
+    .profileDetails
+    form
+    .form-row
+    .label-input {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+#profile
+    .profileContainer
+    .container
+    .profileDetails
+    form
+    .form-row
+    .label-input
+    label {
+    color: #989d98;
+    margin-bottom: 12px;
+}
+#profile .profileContainer .container .profileDetails form input[type="text"],
+#profile .profileContainer .container .profileDetails form input[type="tel"],
+#profile .profileContainer .container .profileDetails form input[type="email"],
+#profile .profileContainer .container .profileDetails form input[type="date"],
+#profile
+    .profileContainer
+    .container
+    .profileDetails
+    form
+    input[type="number"] {
+    border: 1px solid #d1d1d1;
+    width: 100%;
+    color: #7c847c;
+    font-size: 18px;
+    font-family: "InterMedium";
+    padding: 18px 60px 18px 20px; /* Adjust padding as needed */
+    margin-bottom: 5px; /* Adjust margin as needed */
+    border-radius: 8px; /* Add border radius for rounded corners */
+}
+#profile
+    .profileContainer
+    .container
+    .profileDetails
+    form
+    .form-row:last-child {
+    justify-content: flex-end;
+}
+#profile
+    .profileContainer
+    .container
+    .profileDetails
+    form
+    .form-row:last-child
+    button {
+    color: #8ac185;
+    border: 1px solid #7c847c;
+    padding: 10px 28px;
+    border-radius: 58px;
+}
+#profile
+    .profileContainer
+    .container
+    .profileDetails
+    form
+    .form-row
+    .gender
+    .selector
+    input[type="radio"] {
+    padding-right: 10px; /* Adjust padding as needed */
+}
+
+#profile
+    .profileContainer
+    .container
+    .profileDetails
+    form
+    .form-row
+    .gender
+    .selector
+    input[type="radio"]:nth-child(1),
+#profile
+    .profileContainer
+    .container
+    .profileDetails
+    form
+    .form-row
+    .gender
+    .selector
+    input[type="radio"]:nth-child(2) {
+    border-right: 1px solid #d1d1d1; /* Adjust border color as needed */
+    padding-right: 10px; /* Adjust padding as needed */
+}
+
+/* Adjusted CSS based on the HTML structure */
+
+#userSolutions .container .top h4 {
+    color: #828682;
+    font-size: 20px;
+    font-family: "InterMedium";
+    margin-bottom: 12px;
+}
+#userSolutions .container .top .headingButton {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+#userSolutions .container .top .buttonContainer button.backgroundButton {
+    padding: 8px 40px;
+    border-radius: 6px;
+    background-color: #8ac185;
+    color: white;
+    cursor: pointer;
+}
+
+#userSolutions .container .bottom {
+    border: 1px solid #f5f5f5;
+    border-radius: 16px;
+}
+
+#userSolutions .container .bottom .solutionSection {
+    margin-top: 20px;
+}
+
+#userSolutions .container .bottom .solutionSection ul li {
+    padding: 20px 32px;
+}
+
+#userSolutions
+    .container
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .title {
+    color: #989d98;
+    margin-left: 48px;
+}
+
+#userSolutions
+    .container
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .profileName {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+#userSolutions
+    .container
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .profileName
+    .profileImage {
+    width: 40px;
+}
+
+#userSolutions
+    .container
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .profileName
+    .name {
+    color: #989d98;
+}
+
+#userSolutions
+    .container
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .nameSolution {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+#userSolutions
+    .container
+    .bottom
+    .solutionSection
+    ul
+    li
+    .solutions
+    .subject
+    .nameSolution
+    .solution {
+    margin-left: 48px;
+    color: #7c847c;
+    line-height: 30px;
+}
+
+#userSolutions .container .bottom .solutionSection ul li .buttonContainer {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+#userSolutions
+    .container
+    .bottom
+    .solutionSection
+    ul
+    li
+    .buttonContainer
+    a.backgroundButton {
+    padding: 8px 30px;
+    border-radius: 6px;
+    background-color: #8ac185;
+    color: white !important;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.paginationContainer .text {
+    color: #949a93;
+    font-size: 14px;
+    font-family: "InterMedium";
+}
+
+.paginationNav {
+    display: flex;
+    align-items: center;
+}
+
+.paginationNav button {
+    color: #4caf50; /* Green text */
+    padding: 8px 16px; /* Padding */
+    margin: 2px; /* Margin between buttons */
+    border: 1px solid #4caf50; /* Border */
+    border-radius: 6px;
+    cursor: pointer; /* Cursor style */
+    background-color: transparent; /* Transparent background */
+}
+
+.paginationNav button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.paginationNav button.active {
+    background-color: #4caf50; /* Green background for active page */
+    color: white; /* White text */
+}

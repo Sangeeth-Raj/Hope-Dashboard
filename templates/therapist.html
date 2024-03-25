@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+        <link rel="stylesheet" href="{% static '/css/font.css' %}" />
+        <title>Hope</title>
+    </head>
+    <body>
+        <header>
+            <div class="logoProfile">
+                <div class="logo">
+                    <a href="#">
+                        <span class="logoFrame">
+                            <img
+                                src="{% static '/images/logo.png' %}"
+                                alt="logo" />
+                        </span>
+                    </a>
+                </div>
+                <div class="profile">
+                    <div class="profileContainer">
+                        <div class="profileFrame">
+                            <img
+                                src="{% static '/images/profile-image.png' %}"
+                                alt="" />
+                        </div>
+                        <span class="name"> {{ request.user.patient.name }} </span>
+                        <div class="downArrow">
+                            <a href="{% url 'profile' %}">
+                                <img
+                                    src="{% static '/images/arrow-down.svg' %}"
+                                    alt="down arrow" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <a href="{% url 'index' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/dashboard.svg' %}"
+                                    alt="home" />
+                            </div>
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{% url 'therapist' %}"
+                            ><div class="iconFrame">
+                                <img
+                                    src="{% static '/images/therapist.svg' %}"
+                                    alt="therapist" />
+                            </div>
+                            Therapist's</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'user' %}"
+                            ><div class="iconFrame">
+                                <img
+                                    src="{% static '/images/user.svg' %}"
+                                    alt="user" />
+                            </div>
+                            User's</a
+                        >
+                    </li>
+                </ul>
+                <div class="logout">
+                    <a href="#" id="logoutButton">
+                        <div class="iconFrame">
+                            <img
+                                src="{% static '/images/logout.svg' %}"
+                                alt="" />
+                        </div>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+            <div class="content">
+                <section id="therapist">
+                    <h4>Therapist</h4>
+                    <table id="therapistTable">
+                        <thead>
+                            <tr>
+                                <th>Sl No</th>
+                                <th>Therapist ID</th>
+                                <th>Name</th>
+                                <th>Hospital Name</th>
+                                <th>Total Years of Experience</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for admin_therapist in single %}
+                            <tr id="therapist{{ forloop.counter }}">
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ admin_therapist.therapist_id }}</td>
+                                <td>{{ admin_therapist.name }}</td>
+                                <td>{{ admin_therapist.hospital_name }}</td>
+                                <td>{{ admin_therapist.total_years_of_experience }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="paginationContainer">
+                        <div class="text">Showing 1 to 10 User's</div>
+                        <div class="paginationNav">
+                            <button id="prevBtn">&lt;</button>
+                            <div id="pagination" class="pagination"></div>
+                            <button id="nextBtn">&gt;</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="modal" id="logoutModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="heading">Logout</div>
+                <div class="question">Are you sure want to logout?</div>
+                <form method="post" action="{% url 'logout_user' %}">
+                    {% csrf_token %}
+                    <div class="buttonContainer">
+                        <button type="button" class="borderButton" onclick="closeLogoutModal()">Cancel</button>
+                        <button type="submit" class="backgroundButton">Logout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="{% static 'js/app.js' %}"></script>
+        <script src="{% static 'js/logout-modal.js' %}"></script>
+        <script>
+            // Get the current path of the page
+            var currentPath = window.location.pathname;
+
+            // Get all navigation links
+            var navLinks = document.querySelectorAll('nav a');
+
+            // Iterate through each navigation link
+            navLinks.forEach(function(link) {
+                // Check if the current path matches the link's href attribute
+                if (currentPath === link.getAttribute('href')) {
+                    // Add the active class to the link's parent <li> element
+                    link.parentElement.classList.add('active');
+                }
+            });
+        </script>
+
+        <script src="{% static 'js/singlePage.js' %}"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var table = document.getElementById('therapistTable');
+                var rows = table.getElementsByTagName('tr');
+                var rowsPerPage = 11;
+                var currentPage = 0;
+
+                function showPage(page) {
+                    var start = page * rowsPerPage;
+                    var end = start + rowsPerPage;
+                    for (var i = 0; i < rows.length; i++) {
+                        if (i >= start && i < end) {
+                            rows[i].style.display = '';
+                        } else {
+                            rows[i].style.display = 'none';
+                        }
+                    }
+                }
+
+                function createPagination() {
+                    var pageCount = Math.ceil(rows.length / rowsPerPage);
+                    var pagination = document.getElementById('pagination');
+                    pagination.innerHTML = '';
+                    for (var i = 0; i < pageCount; i++) {
+                        var button = document.createElement('button');
+                        button.innerText = i + 1;
+                        button.addEventListener('click', function() {
+                            currentPage = parseInt(this.innerText) - 1;
+                            showPage(currentPage);
+                        });
+                        pagination.appendChild(button);
+                    }
+                }
+
+                function updatePagination() {
+                    var buttons = document.querySelectorAll('.pagination button');
+                    buttons.forEach(function(btn) {
+                        btn.classList.remove('active');
+                    });
+                    buttons[currentPage].classList.add('active');
+                }
+
+                createPagination();
+                showPage(currentPage);
+
+                var prevBtn = document.getElementById('prevBtn');
+                var nextBtn = document.getElementById('nextBtn');
+
+                prevBtn.addEventListener('click', function() {
+                    if (currentPage > 0) {
+                        currentPage--;
+                        showPage(currentPage);
+                        updatePagination();
+                    }
+                });
+
+                nextBtn.addEventListener('click', function() {
+                    if (currentPage < Math.ceil(rows.length / rowsPerPage) - 1) {
+                        currentPage++;
+                        showPage(currentPage);
+                        updatePagination();
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

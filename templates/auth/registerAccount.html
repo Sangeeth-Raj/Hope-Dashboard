@@ -1,0 +1,11 @@
+{% extends 'auth/loginbase.html' %}
+
+{% block content %}
+<div id="selectUser">
+    <p class="welcome">Welcome to HOPE!</p>
+    <p class="title">Register new account</p>
+    <a href="{% url 'therapist-registration' %}" class="registration-link">Join as therapist</a>
+
+    <a href="{% url 'patient-registration' %}" class="registration-link">Join as user</a>
+</div>
+{% endblock %}

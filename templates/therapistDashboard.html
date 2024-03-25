@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+        <link rel="stylesheet" href="{% static '/css/font.css' %}" />
+        <title>Hope</title>
+    </head>
+    <body>
+        <header>
+            <div class="logoProfile">
+                <div class="logo">
+                    <a href="#">
+                        <span class="logoFrame">
+                            <img
+                                src="{% static '/images/logo.png' %}"
+                                alt="logo" />
+                        </span>
+                    </a>
+                </div>
+                <div class="profile">
+                    <div class="profileContainer">
+                        <div class="profileFrame">
+                            <img
+                                src="{% static '/images/profile-image.png' %}"
+                                alt="" />
+                        </div>
+                        <span class="name">{{ request.user.profile.name }}</span>
+                        <div class="downArrow">
+                            <a href="{% url 'therapist_profile' %}">
+                                <img
+                                    src="{% static '/images/arrow-down.svg' %}"
+                                    alt="down arrow" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <a href="{% url 'therapist_dashboard' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/dashboard.svg' %}"
+                                    alt="home" />
+                            </div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'problems' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/therapist.svg' %}"
+                                    alt="therapist" />
+                            </div>
+                            Problems
+                        </a>
+                    </li>
+                </ul>
+                <div class="logout">
+                    <a href="#" id="logoutButton">
+                        <div class="iconFrame">
+                            <img
+                                src="{% static '/images/logout.svg' %}"
+                                alt="" />
+                        </div>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+            <div class="content">
+                <section id="therapist-dashboard">
+                    <h4>Dashboard</h4>
+                    <div class="dashboardCards">
+                        <div class="card">
+                            <div class="left">
+                                <div class="iconFrame">
+                                    <img
+                                        src="{% static '/images/user.svg' %}"
+                                        alt="user" />
+                                </div>
+                            </div>
+                            <div class="right">
+                                <p class="miniTitle">Total solution's posted</p>
+                                <p class="count">{{ total_solutions_posted }}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="card">
+                            <div class="left">
+                                <div class="iconFrame">
+                                    <img
+                                        src="{% static '/images/user.svg' %}"
+                                        alt="user" />
+                                </div>
+                            </div>
+                            <div class="right">
+                                <p class="miniTitle">Total solutions posted</p>
+                                <p class="count">980</p>
+                            </div>
+                        </div>  -->
+                        <div class="card">
+                            <div class="left">
+                                <div class="iconFrame">
+                                    <img
+                                        src="{% static '/images/user.svg' %}"
+                                        alt="user" />
+                                </div>
+                            </div>
+                            <div class="right">
+                                <p class="miniTitle">My total solutions</p>
+                                <p class="count">{{ total_solutions }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="graphContainer">
+                            <div class="subTitle">
+                                <p>Solutions overview</p>
+                            </div>
+                            <div class="chart">
+                                <canvas
+                                    id="myChart"
+                                    style="height: 70vh;"></canvas>
+                            </div>
+                        </div>
+                        <div class="tableContainer">
+                            <div class="subTitle">
+                                <p>Recently posted problems</p>
+                            </div>
+                            <ul>
+                                {% for problem in problems %}
+                                <li>
+                                    <div class="heading">
+                                        {{ problem.title }}
+                                    </div>
+                                    <div class="problem">
+                                        <span class="truncate">
+                                            {{problem.description}}
+                                        </span>
+                                    </div>
+                                    <div class="buttonContainer">
+                                        <a href="{% url 'problems' %}">
+                                            <button>View problem</button>
+                                        </a>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="modal" id="logoutModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="heading">Logout</div>
+                <div class="question">Are you sure want to logout?</div>
+                <form method="post" action="{% url 'logout_user' %}">
+                    {% csrf_token %}
+                    <div class="buttonContainer">
+                        <button type="button" class="borderButton" onclick="closeLogoutModal()">Cancel</button>
+                        <button type="submit" class="backgroundButton">Logout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="{% static 'js/app.js' %}"></script>
+        <script src="{% static '/js/logout-modal.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="{% static 'js/therapist-dashboard-chart.js' %}"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var truncateElements = document.querySelectorAll('.truncate');
+                truncateElements.forEach(function(element) {
+                    var maxLength = 130; 
+                    var text = element.textContent;
+                    if (text.length > maxLength) {
+                        element.textContent = text.substring(0, maxLength) + '...';
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

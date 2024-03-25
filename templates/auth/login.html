@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hope</title>
+        <link rel="stylesheet" href="{% static '../static/css/style.css' %}" />
+        <link rel="stylesheet" href="{% static '../static/css/font.css' %}" />
+    </head>
+    <body>
+        <section id="login">
+            <div class="left">
+                <img src="{% static '/images/login-background.png' %}" alt="" />
+            </div>
+            <div class="right">
+                <div class="rightContent">
+                    <div class="logo">
+                        <img src="{% static '/images/logo.png' %}" alt="logo" />
+                    </div>
+                    <form
+                        class="signIn"
+                        id="loginForm"
+                        method="post"
+                        action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <p class="welcome">Welcome back !</p>
+                        <p class="title">Login to your Account</p>
+                        <div class="field">
+                            <label for="number">Mobile number</label>
+                            <input
+                                type="text"
+                                required
+                                name="username" />
+                        </div>
+                        <div class="field">
+                            <label for="passsword">Password</label>
+                            <input
+                                type="password"
+                                required
+                                name="password" />
+                        </div>
+                        <span>
+                            <button
+                                class="loginButton"
+                                type="submit"
+                                id="loginButton">
+                                Login
+                            </button>
+                        </span>
+                        <div class="account">
+                            <p>
+                                Didn't have an account ?
+                                <a href="{% url 'register-account' %}">Create new account</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        {% if message %}
+        <script>
+            swal(
+                "Failed!",
+                "{{message}}",
+                "error"
+            );
+        </script>
+        {% endif %}
+    </body>
+</html>

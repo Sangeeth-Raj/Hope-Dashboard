@@ -1,0 +1,325 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+        <link rel="stylesheet" href="{% static '/css/font.css' %}" />
+        <title>Hope</title>
+    </head>
+    <body>
+        <header>
+            <div class="logoProfile">
+                <div class="logo">
+                    <a href="#">
+                        <span class="logoFrame">
+                            <img
+                                src="{% static '/images/logo.png' %}"
+                                alt="logo" />
+                        </span>
+                    </a>
+                </div>
+                <div class="profile">
+                    <div class="profileContainer">
+                        <div class="profileFrame">
+                            <img
+                                src="{% static '/images/profile-image.png' %}"
+                                alt="" />
+                        </div>
+                        <span class="name"> {{ request.user.patient.name }} </span>
+                        <div class="downArrow">
+                            <a href="{% url 'profile' %}">
+                                <img
+                                    src="{% static '/images/arrow-down.svg' %}"
+                                    alt="down arrow" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+            <nav>
+                <ul>
+                    <li class="nav-item">
+                        <a href="{% url 'user_dashboard' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/dashboard.svg' %}"
+                                    alt="home" />
+                            </div>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'user_solution' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/therapist.svg' %}"
+                                    alt="therapist" />
+                            </div>
+                            Solution
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'user_therapist' %}">
+                            <div class="iconFrame">
+                                <img
+                                    src="{% static '/images/therapist.svg' %}"
+                                    alt="therapist" />
+                            </div>
+                            Therapist
+                        </a>
+                    </li>
+                </ul>
+                <div class="logout">
+                    <a href="#" id="logoutButton">
+                        <div class="iconFrame">
+                            <img
+                                src="{% static '/images/logout.svg' %}"
+                                alt="" />
+                        </div>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+            <div class="content">
+                <section id="therapistSingle">
+                    <div class="container">
+                        <div class="top">
+                            <div class="name">{{therapist.name}}</div>
+                            <div class="breadcrumb">
+                                <a href="{% url 'therapist' %}">Therapist's </a>
+                                <span class="slash">/</span>
+                                <a href="#">{{therapist.name}}</a>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <div class="therapistDetails">
+                                <div class="left">
+                                    <div class="profile">
+                                        <div class="profileImage">
+                                            <img
+                                                src="{% static '/images/therapist.png' %}"
+                                                alt="profile image" />
+                                        </div>
+                                        <p class="name">{{therapist.name}}</p>
+                                        <p class="therapistId">
+                                            {{therapist.therapist_id}}
+                                        </p>
+                                    </div>
+                                    <div class="wholeInformation">
+                                        <div class="informationContainer">
+                                            <p class="heading">
+                                                Total year of experience
+                                            </p>
+                                            <span class="contentText"
+                                                >{{therapist.total_years_of_experience}}</span
+                                            >
+                                        </div>
+                                        <div class="informationContainer">
+                                            <p class="heading">Hospital Name</p>
+                                            <span class="contentText"
+                                                >{{therapist.hospital_name}}</span
+                                            >
+                                        </div>
+                                        <div class="informationContainer">
+                                            <p class="heading">Location</p>
+                                            <span class="contentText"
+                                                >{{therapist.location}}</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="contactDetails">
+                                        <div class="informationContainer">
+                                            <p class="heading">
+                                                Contact number
+                                            </p>
+                                            <span class="contentText"
+                                                >{{therapist.contact_number}}</span
+                                            >
+                                        </div>
+                                        <div class="informationContainer">
+                                            <p class="heading">Mail ID</p>
+                                            <span class="contentText"
+                                                >{{therapist.email}}</span
+                                            >
+                                        </div>
+                                       
+                                        <div class="informationContainer">
+                                            <p class="heading">
+                                                Total solutions posted
+                                            </p>
+                                            <span class="contentText"
+                                                >{{therapist.total_solutions_posted}}</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <!-- <div class="recentSolutions">
+                                        <h4>Recently posted solution</h4>
+                                        <ul>
+                                            <li>
+                                                <div class="headingButton">
+                                                    <div
+                                                        class="solutionHeading">
+                                                        Major Depressive
+                                                        Disorder
+                                                    </div>
+                                                    <a href="#">View problem</a>
+                                                </div>
+                                                <div class="solution">
+                                                    <p class="solutions">
+                                                        Treatment for Major
+                                                        Depressive Disorder
+                                                        typically involves a
+                                                        combination of
+                                                        psychotherapy and
+                                                        medication prescribed by
+                                                        a mental health
+                                                        professional. It's
+                                                        crucial for individuals
+                                                        to seek professional
+                                                        help and maintain a
+                                                        consistent treatment
+                                                        plan for effective
+                                                        management of symptoms.
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="headingButton">
+                                                    <div
+                                                        class="solutionHeading">
+                                                        Major Depressive
+                                                        Disorder
+                                                    </div>
+                                                    <a href="#">View problem</a>
+                                                </div>
+                                                <div class="solution">
+                                                    <p class="solutions">
+                                                        Treatment for Major
+                                                        Depressive Disorder
+                                                        typically involves a
+                                                        combination of
+                                                        psychotherapy and
+                                                        medication prescribed by
+                                                        a mental health
+                                                        professional. It's
+                                                        crucial for individuals
+                                                        to seek professional
+                                                        help and maintain a
+                                                        consistent treatment
+                                                        plan for effective
+                                                        management of symptoms.
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="headingButton">
+                                                    <div
+                                                        class="solutionHeading">
+                                                        Major Depressive
+                                                        Disorder
+                                                    </div>
+                                                    <a href="#">View problem</a>
+                                                </div>
+                                                <div class="solution">
+                                                    <p class="solutions">
+                                                        Treatment for Major
+                                                        Depressive Disorder
+                                                        typically involves a
+                                                        combination of
+                                                        psychotherapy and
+                                                        medication prescribed by
+                                                        a mental health
+                                                        professional. It's
+                                                        crucial for individuals
+                                                        to seek professional
+                                                        help and maintain a
+                                                        consistent treatment
+                                                        plan for effective
+                                                        management of symptoms.
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="modal" id="logoutModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="heading">Logout</div>
+                <div class="question">Are you sure want to logout?</div>
+                <form method="post" action="{% url 'logout_user' %}">
+                    {% csrf_token %}
+                    <div class="buttonContainer">
+                        <button type="button" class="borderButton" onclick="closeLogoutModal()">Cancel</button>
+                        <button type="submit" class="backgroundButton">Logout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal" id="myModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="heading">Post solution</div>
+                <div class="subHeading">
+                    Diagnosing major depressive disorder
+                </div>
+                <div class="question">
+                    What are the early warning signs of eating disorders, and
+                    how can they be effectively addressed through preventive
+                    measures and interventions?
+                </div>
+                <form action="">
+                    <textarea
+                        name=""
+                        id=""
+                        cols="20"
+                        rows="10"
+                        placeholder="Write your solution here..."></textarea>
+                    <div class="buttonContainer">
+                        <button type="reset" class="borderButton">
+                            Cancel
+                        </button>
+                        <button type="submit" class="backgroundButton">
+                            Post
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="{% static 'js/app.js' %}"></script>
+        <script src="{% static '/js/logout-modal.js' %}"></script>
+        <script>
+            // Get the current path of the page
+            var currentPath = window.location.pathname;
+
+            // Get all navigation links
+            var navLinks = document.querySelectorAll('nav a');
+
+            // Iterate through each navigation link
+            navLinks.forEach(function(link) {
+                // Check if the current path matches the link's href attribute
+                if (currentPath === link.getAttribute('href')) {
+                    // Add the active class to the link's parent <li> element
+                    link.parentElement.classList.add('active');
+                }
+            });
+        </script>
+
+        <script src="{% static '/js/modal.js' %}"></script>
+    </body>
+</html>

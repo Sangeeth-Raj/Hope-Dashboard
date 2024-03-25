@@ -1,0 +1,133 @@
+{% extends 'auth/loginbase.html' %} {% block content %}
+<form method="post" action="{% url 'therapist-registration' %}">
+    {% csrf_token %}
+    <p class="title">Register new account</p>
+
+    <div class="field">
+        <label for="name">Name</label>
+        <input type="text" required name="name" />
+    </div>
+    <div class="therapistField">
+        <div class="flexContainer">
+            <div class="field">
+                <label for="name">Phone Number</label>
+                <input
+                    type="tel"
+                    required
+                    name="phone_number" />
+            </div>
+            <div class="field">
+                <label for="name">Mail ID</label>
+                <input
+                    type="email"
+                    required
+                    name="email_id" />
+            </div>
+        </div>
+        <div class="flexContainer">
+            <div class="field">
+                <label for="name">Qualification</label>
+                <input
+                    type="text"
+                    required
+                    name="qualification" />
+            </div>
+            <div class="field">
+                <label for="name">ID - Proof</label>
+                <input
+                    id="id-proof"
+                    type="file"
+                    required
+                    hidden
+                    name="upload_file" />
+                <label class="input" for="id-proof">Upload file</label>
+            </div>
+        </div>
+        <div class="flexContainer">
+            <div class="field">
+                <label for="name">Location</label>
+                <input
+                    type="text"
+                    required
+                    name="location" />
+            </div>
+            <div class="field">
+                <label for="name">Total year of experience</label>
+                <input
+                    type="text"
+                    required
+                    name="total_year_of_experience" />
+            </div>
+        </div>
+        <div class="flexContainer">
+            <div class="field">
+                <label for="name">Hospital</label>
+                <input
+                type="text"
+                required
+                name="hospital" />
+            </div>
+            <div class="field">
+                <label for="name">Age</label>
+                <input
+                    type="text"
+                    required
+                    name="age" />
+            </div>
+        </div>
+        <div class="field gender">
+            <label for="gender">Gender : </label>
+            <div class="selector">
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+        </div>
+        <div class="flexContainer">
+            <div class="field">
+                <label for="passsword">Password</label>
+                <input
+                    type="password"
+                    required
+                    name="password" />
+            </div>
+            <div class="field">
+                <label for="confirm_passsword">Re - Enter password</label>
+                <input
+                    type="password"
+                    required
+                    name="confirm_password" />
+            </div>
+        </div>
+        <span>
+            <button
+                class="loginButton"
+                type="submit"
+                id="loginButton">
+                Register
+            </button>
+        </span>
+        <div class="account">
+            <p>
+                Already have an account
+                <a href="{% url 'login' %}">Login</a>
+            </p>
+        </div>
+    </div>
+</form>
+<script>
+    const label = document.querySelector('label.input')
+    const input = document.getElementById("id-proof")
+
+    input.addEventListener("change",e =>{
+        console.log(e.target.files[0].name);
+
+        const name = e.target.files[0].name
+
+        label.innerText = name
+    })
+</script>
+{% endblock %}
