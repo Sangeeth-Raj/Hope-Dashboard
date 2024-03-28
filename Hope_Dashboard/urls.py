@@ -19,6 +19,7 @@ from django.urls import path, include
 from web.views import login_view, patient_registration, therapist_registration, register_account, logout_user
 
 urlpatterns = [
+    path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
     path('register-account/', register_account, name='register-account'),
     path('login/', login_view, name='login'),

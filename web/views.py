@@ -128,7 +128,7 @@ def register_account(request):
 
 def logout_user(request):
     if request.user.is_authenticated:
-        username = request.user.username  # Fetch username before logout
+        username = request.user.username
         logout(request)
         message = f'Successfully logged out {username}.'
     else:
